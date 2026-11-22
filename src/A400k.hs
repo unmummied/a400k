@@ -1,19 +1,17 @@
 module A400k (a400k) where
 
 a400k :: [Int]
-a400k = map nthA400k [1 ..]
+a400k = map nth [1 ..]
 
-nthA400k :: Int -> Int
-nthA400k 1 = 0
-nthA400k n = head $ filter (\h -> countSees h sequ == h) [0 ..]
-  where
-    sequ = take (n - 1) a400k
+nth :: Int -> Int
+nth n = head $ filter (\h -> countSees h prevs == h) [0 ..]
+  where prevs = take (n - 1) a400k
 
 countSees :: Int -> [Int] -> Int
-countSees hr hls = length $ filter p $ map (`drop` hls) [0 .. n - 1]
+countSees hr hls = length . filter hrSees $ map (`drop` hls) [0 .. n - 1]
   where
-    p (hl : hms) = (hl `isSeenFrom` hr) hms
-    n            = length hls
+    hrSees (hl : hms) = (hl `isSeenFrom` hr) hms
+    n                 = length hls
 
 -- | Test whether the right building sees the left building.
 --
