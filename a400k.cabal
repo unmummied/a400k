@@ -16,6 +16,8 @@ common warnings
     ghc-options:
         -Wall
         -Wno-x-partial
+        -Wno-missing-signatures
+        -Wno-type-defaults
         -Wno-incomplete-patterns
 
 library
