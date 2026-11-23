@@ -22,7 +22,7 @@ common warnings
 
 library
     import: warnings
-    exposed-modules: A400k
+    exposed-modules: A400k, Build
     -- other-modules:
     -- other-extensions:
     build-depends: base
